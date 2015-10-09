@@ -84,7 +84,8 @@ namespace RevStack.Identity
         #endregion
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
+
+        private bool disposedValue = false; 
 
         protected virtual void Dispose(bool disposing)
         {
@@ -92,7 +93,10 @@ namespace RevStack.Identity
             {
                 if (disposing)
                 {
-                    // TODO: dispose managed state (managed objects).
+                    if (_roleUnitOfWork !=null)
+                    {
+                        _roleUnitOfWork.Dispose();
+                    }
                 }
 
                 disposedValue = true;
@@ -102,8 +106,6 @@ namespace RevStack.Identity
         public void Dispose()
         {
             Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
-            // GC.SuppressFinalize(this);
         }
         #endregion
     }
